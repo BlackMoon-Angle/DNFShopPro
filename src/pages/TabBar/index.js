@@ -29,7 +29,7 @@ class TabBarExample extends React.Component {
     }
     render() {
         return (
-            <div style={{ position: 'fixed', height: '100%', width: '100%', bottom: 0 }}>
+            <div style={{ position: 'fixed', width: '100%', bottom: 0 }}>
                 <TabBar
                     unselectedTintColor="#949494"
                     tintColor="#ef524b"

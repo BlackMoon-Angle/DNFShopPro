@@ -1,0 +1,86 @@
+p,
+a,
+i,
+b,
+u,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ul,
+ol,
+li,
+dl,
+dt,
+dd,
+tr,
+td,
+th,
+em,
+div,
+img,
+nav,
+time,
+main,
+html,
+body,
+form,
+span,
+mark,
+input,
+table,
+thead,
+tbody,
+tfoot,
+label,
+aside,
+small,
+hgroup,
+footer,
+figure,
+select,
+legend,
+option,
+button,
+header,
+caption,
+article,
+section,
+fieldset,
+colgroup,
+figcaption {
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+a {
+    color: #333;
+    text-decoration: none;
+}
+
+ol,
+ul,
+li {
+    list-style: none;
+}
+
+.clear_fix::after {
+    content: "";
+    display: block;
+    clear: both;
+    overflow: hidden;
+    height: 0;
+    visibility: hidden;
+}
+
+img {
+    border: 0;
+    display: block;
+}

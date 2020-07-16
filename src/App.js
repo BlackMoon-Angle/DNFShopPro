@@ -1,5 +1,7 @@
 import React from 'react';
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom'
+import '../public/css/common.css';
+
 
 //标签栏组件
 import 'antd-mobile/dist/antd-mobile.css';
@@ -17,7 +19,7 @@ import Register from './pages/Register'
 
 class App extends React.Component {
   state = {
-    current: '/home',
+    // current: '/home',
     menu: [{
       title: '首页',
       path: '/home',
@@ -48,12 +50,13 @@ class App extends React.Component {
       <div className="App">
         <Switch>
           {/* 打开页面默认打开首页 */}
-          <Redirect from='/' to='/home' exact />
+          
           {/* 路由 */}
-          <Route path='/home' component={Home} />
-          <Route path='/list/:id' component={List} />
-          <Route path='/shopcart' component={ShopCart} />
-          <Route path='/user' component={User} />
+          <Route exact strict path='/home' component={Home} />
+          <Route exact strict path='/list/:id' component={List} />
+          <Route exact strict path='/shopcart' component={ShopCart} />
+          <Route exact strict path='/user' component={User} />
+          <Redirect from='/' to='/home' exact strict />
         </Switch>
         <TabBarExample />
       </div>

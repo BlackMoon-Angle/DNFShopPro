@@ -1,0 +1,171 @@
+[{
+        "id": "goods_nav_1",
+        "goods": [{
+                "img": "https://img.dnfcity.qq.com/goodsImages/mall2015/1799/da1.jpg",
+                "title": "地下城与勇士·国风象棋",
+                "price": "368"
+            },
+            {
+                "img": "https://img.dnfcity.qq.com/goodsImages/mall2015/1748/da1.jpg",
+                "title": "普雷·伊希斯 雕塑",
+                "price": "2999"
+            },
+            {
+                "img": "https://img.dnfcity.qq.com/goodsImages/mall2015/1750/da1.jpg",
+                "title": "克伦特的呐喊",
+                "price": "3299"
+            },
+            {
+                "img": "https://img.dnfcity.qq.com/goodsImages/mall2015/1492/da1.jpg",
+                "title": "女圣职 正比例手办（普通版）",
+                "price": "599"
+            },
+            {
+                "img": "https://img.dnfcity.qq.com/goodsImages/mall2015/1507/da1.jpg",
+                "title": "女大枪风暴骑兵 雕塑",
+                "price": "2399"
+            },
+            {
+                "img": "https://img.dnfcity.qq.com/goodsImages/mall2015/1561/da1.jpg",
+                "title": "赛丽亚 礼盒",
+                "price": "299"
+            }
+        ]
+    },
+    {
+        "id": "goods_nav_2",
+        "goods": [{
+                "img": "https://img.dnfcity.qq.com/goodsImages/mall2015/1582/da1.jpg",
+                "title": "天帝二觉 Q版手办",
+                "price": "159"
+            },
+            {
+                "img": "https://img.dnfcity.qq.com/goodsImages/mall2015/1644/da1.jpg",
+                "title": "古灵精怪二觉 Q版手办",
+                "price": "158"
+            },
+            {
+                "img": "https://img.dnfcity.qq.com/goodsImages/mall2015/1657/da1.jpg",
+                "title": "天空之忆妙趣盒 展示柜",
+                "price": "199"
+            },
+            {
+                "img": "https://img.dnfcity.qq.com/goodsImages/mall2015/1453/da1.jpg",
+                "title": "卢克与贝奇 Q版手办",
+                "price": "199"
+            },
+            {
+                "img": "https://img.dnfcity.qq.com/goodsImages/mall2015/1508/da1.jpg",
+                "title": "风暴骑兵二觉 Q版手办",
+                "price": "158"
+            },
+            {
+                "img": "https://img.dnfcity.qq.com/goodsImages/mall2015/1566/da1.jpg",
+                "title": "裁决女神二觉 Q版手办",
+                "price": "158"
+            }
+        ]
+    },
+    {
+        "id": "goods_nav_3",
+        "goods": [{
+                "img": "https://img.dnfcity.qq.com/goodsImages/mall2015/1736/da1.jpg",
+                "title": "普雷·伊希斯之卵 悬浮灯",
+                "price": "426"
+            },
+            {
+                "img": "https://img.dnfcity.qq.com/goodsImages/mall2015/1629/da1.jpg",
+                "title": "幕落 手表",
+                "price": "218"
+            },
+            {
+                "img": "https://img.dnfcity.qq.com/goodsImages/mall2015/1633/da1.jpg",
+                "title": "泰波尔斯 手机指环",
+                "price": "58"
+            },
+            {
+                "img": "https://img.dnfcity.qq.com/goodsImages/mall2015/1631/da1.jpg",
+                "title": "苍穹幕落 打火机",
+                "price": "188"
+            },
+            {
+                "img": "https://img.dnfcity.qq.com/goodsImages/mall2015/1625/da1.jpg",
+                "title": "苍穹幕落 手机膜",
+                "price": "38"
+            },
+            {
+                "img": "https://img.dnfcity.qq.com/goodsImages/mall2015/1404/da1.jpg",
+                "title": "起源 手表",
+                "price": "188"
+            }
+        ]
+    },
+    {
+        "id": "goods_nav_4",
+        "goods": [{
+                "img": "https://img.dnfcity.qq.com/goodsImages/mall2015/1652/da1.jpg",
+                "title": "DNF个性定制 T恤",
+                "price": "128"
+            },
+            {
+                "img": "https://img.dnfcity.qq.com/goodsImages/mall2015/1125/da1.jpg",
+                "title": "神枪 卫衣",
+                "price": "198"
+            },
+            {
+                "img": "https://img.dnfcity.qq.com/goodsImages/mall2015/1378/da1.jpg",
+                "title": "幽魂魅影 长裤",
+                "price": "208"
+            },
+            {
+                "img": "https://img.dnfcity.qq.com/goodsImages/mall2015/1456/da1.jpg",
+                "title": "卢克塔罗牌 卫衣",
+                "price": "238"
+            },
+            {
+                "img": "https://img.dnfcity.qq.com/goodsImages/mall2015/1457/da1.jpg",
+                "title": "光卢克 卫衣",
+                "price": "238"
+            },
+            {
+                "img": "https://img.dnfcity.qq.com/goodsImages/mall2015/1458/da1.jpg",
+                "title": "卢克与贝奇 卫衣",
+                "price": "238"
+            }
+        ]
+    },
+    {
+        "id": "goods_nav_5",
+        "goods": [{
+                "img": "https://img.dnfcity.qq.com/goodsImages/mall2015/1724/da1.jpg",
+                "title": "普雷游戏数据线",
+                "price": "58"
+            },
+            {
+                "img": "https://img.dnfcity.qq.com/goodsImages/mall2015/1725/da1.jpg",
+                "title": "普雷三口充电线",
+                "price": "68"
+            },
+            {
+                "img": "https://img.dnfcity.qq.com/goodsImages/mall2015/1727/da1.jpg",
+                "title": "缔造者 软胶挂件",
+                "price": "38"
+            },
+            {
+                "img": "https://img.dnfcity.qq.com/goodsImages/mall2015/1728/da1.jpg",
+                "title": "女鬼剑 软胶挂件",
+                "price": "38"
+            },
+            {
+                "img": "https://img.dnfcity.qq.com/goodsImages/mall2015/1729/da1.jpg",
+                "title": "女圣职 软胶挂件",
+                "price": "38"
+            },
+            {
+                "img": "https://img.dnfcity.qq.com/goodsImages/mall2015/1730/da1.jpg",
+                "title": "女格斗 软胶挂件",
+                "price": "38"
+            }
+        ]
+    }
+]

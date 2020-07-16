@@ -1,0 +1,342 @@
+@function vw($px) {
+    @return ($px / 750) * 100vw
+}
+
+;
+
+.home {
+    padding-bottom: vw(150);
+
+    // 顶部
+    .home_head {
+        width: 100%;
+        height: vw(200);
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        z-index: 999;
+        background: white;
+
+        .home_logo {
+            display: block;
+            width: vw(386);
+            height: vw(115);
+            position: absolute;
+            top: 20px;
+            left: 17px;
+            background: url(https://img.dnfcity.qq.com/weixin20/base/logo.png) no-repeat;
+            background-size: 100% 100%;
+        }
+
+        .home_search {
+            display: block;
+            width: vw(58.5);
+            height: vw(58.5);
+            line-height: 1.8;
+            text-align: center;
+            color: #FFF;
+            font-size: 13px;
+            position: absolute;
+            top: vw(75);
+            right: vw(170);
+            background: url(https://img.dnfcity.qq.com/weixin20/base/ico1.png) no-repeat;
+            background-size: 100% 100%;
+        }
+
+        .home_nav {
+            display: block;
+            width: vw(75);
+            height: vw(48);
+            background: url(https://img.dnfcity.qq.com/weixin20/base/ico2.png) no-repeat;
+            background-size: 100% 100%;
+            position: absolute;
+            top: vw(80);
+            right: vw(30);
+
+
+        }
+
+        .nav_box {
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background: rgba(255, 255, 255, 0.9);
+            z-index: 1000;
+            transition: 1s;
+
+            .nav_box_pop {
+                width: 100%;
+                height: auto;
+                position: absolute;
+                top: vw(50);
+                z-index: 1001;
+                max-height: 95%;
+                overflow: auto;
+
+                .nav_box_title {
+                    text-align: center;
+                    color: #454545;
+                    font-size: vw(65);
+                    margin: vw(30) 0;
+                }
+
+                .nav_ul {
+                    width: 80%;
+                    list-style: none;
+                    padding: 0;
+                    margin: 0;
+                    margin-left: 10%;
+
+                    li {
+                        margin-bottom: vw(10);
+
+                        a {
+                            display: block;
+                            width: 100%;
+                            height: 100%;
+                            position: relative;
+                            margin-bottom: vw(25);
+
+                            span {
+                                position: absolute;
+                                display: block;
+                                height: 16px;
+                                line-height: 16px;
+                                font-size: 14px;
+                                color: #fff;
+                                top: 0;
+                                bottom: 0;
+                                margin: auto;
+                                margin-left: 13%;
+                            }
+
+                            img {
+                                width: 100%;
+                                vertical-align: middle;
+                            }
+                        }
+                    }
+                }
+
+                .nav_close {
+                    width: vw(95);
+                    height: vw(95);
+                    margin-top: vw(50);
+                    margin-left: vw(325);
+                    background: url(https://img.dnfcity.qq.com/weixin20/base/menu/pop_close.png) no-repeat;
+                    background-size: 100% 100%;
+                }
+            }
+        }
+    }
+
+    // 轮播图
+    .home_swiper {
+        width: 100%;
+        margin-top: vw(200);
+
+        .am-wingblank.am-wingblank-lg {
+            margin: 0;
+        }
+    }
+
+    // 商品区
+    .home_goods {
+        background: #FFF;
+        position: relative;
+        padding: vw(15) vw(10) vw(12) vw(10);
+
+        // 标题
+        .home_goods_head {
+            width: 100%;
+            height: auto;
+
+            p {
+                text-align: center;
+            }
+
+            .home_goods_head_p1 {
+                color: #6D6D6D;
+                font-size: vw(28);
+                font-weight: 700;
+            }
+
+            .home_goods_head_p2 {
+                color: #B6A597;
+                font-size: vw(60);
+                font-weight: 400;
+                margin-top: vw(20);
+            }
+        }
+
+        // 商品区导航
+        .goods_nav {
+            text-align: center;
+            width: 92%;
+            margin: 0 auto;
+            display: flex;
+            margin-top: vw(15);
+
+            .goods_nav_a {
+                display: block;
+                font-size: vw(25);
+                width: vw(150);
+                height: vw(80);
+                line-height: vw(75);
+                color: #B6A597;
+                margin: 0 vw(5);
+                background: url(https://img.dnfcity.qq.com/weixin20/base/rect_bg1.png) no-repeat top center;
+                background-size: 100% vw(68);
+
+                span {
+                    width: 100%;
+                    height: vw(68);
+                    display: block;
+                }
+            }
+
+            .goods_nav_a_router {
+                background: url(https://img.dnfcity.qq.com/weixin20/base/rect_bg.png) no-repeat top center !important;
+                background-size: cover !important;
+                color: #fff !important;
+            }
+        }
+
+        // 首页商品列表
+        .home_goods_list {
+            width: 96%;
+            margin: 0 auto;
+
+            .home_goods_list_box {
+                padding-bottom: 20px;
+                margin-top: 10px;
+                position: relative;
+                overflow: hidden;
+
+                a {
+                    padding: 0;
+                    overflow: hidden;
+                    position: relative;
+                    float: left;
+                    margin: vw(10) vw(8) vw(5) vw(5);
+                    width: 48%;
+                    box-sizing: border-box;
+                    background: #F2F1F6;
+                    border-radius: vw(10);
+                    box-shadow: 0px 0px vw(10) #7d7b7b;
+
+                    .goods_img {
+                        width: 100%;
+                        height: 100%;
+                        margin: vw(20) auto 0;
+
+                        img {
+                            width: 100%;
+                            height: 100%;
+                        }
+                    }
+
+                    .goods_name_price {
+                        background: #fff;
+
+                        .name {
+                            display: block;
+                            color: #000;
+                            white-space: nowrap;
+                            text-overflow: ellipsis;
+                            overflow: hidden;
+                            text-align: center;
+                            font-size: vw(30);
+                        }
+
+                        .price {
+                            display: block;
+                            color: #000;
+                            white-space: nowrap;
+                            text-overflow: ellipsis;
+                            overflow: hidden;
+                            text-align: center;
+                            margin-top: vw(30);
+
+                            font {
+                                color: #FD3C1C;
+                                font-size: vw(40);
+                                font-weight: bold;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        // 查看更多
+        .home_router_list {
+            background: url(https://img.dnfcity.qq.com/weixin20/base/more.png) no-repeat;
+            background-size: 100% 100%;
+            width: vw(488);
+            height: vw(128);
+            margin: 0 auto;
+
+            a {
+                display: block;
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+
+    //品牌区
+    .home_brand {
+        background: #FFF;
+        position: relative;
+        padding: vw(12) vw(10) vw(6) vw(6);
+
+        // 标题
+        .home_brand_head {
+            width: 100%;
+            height: auto;
+
+            p {
+                text-align: center;
+            }
+
+            .home_brand_p1 {
+                color: #6D6D6D;
+                font-size: vw(28);
+                font-weight: 700;
+            }
+
+            .home_brand_p2 {
+                color: #B6A597;
+                font-size: vw(60);
+                font-weight: 400;
+                margin-top: vw(20);
+            }
+        }
+
+        // 品牌列表
+        .home_brand_list {
+            width: 100%;
+            height: auto;
+
+            ul {
+                margin-top: vw(20);
+
+                li {
+                    margin-bottom: vw(20);
+
+                    a {
+                        display: block;
+                        width: 100%;
+                        height: 100%;
+
+                        img {
+                            width: 100%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
