@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import './index.scss';
+import http from '../../utils/Http'
 //轮播图组件
 import Swiper from '../../utils/Swiper'
+//可显隐式商品导航
+import NavData from '../../utils/NavData'
 
 class Home extends Component {
     constructor() {
@@ -46,37 +49,37 @@ class Home extends Component {
         this.NavBoxStyle = this.NavBoxStyle.bind(this)
     }
     //进入页面立刻渲染数据
-    componentDidMount() {
-        fetch('/json/homeGoods.json')
-            .then(res => res.json())
-            .then(data => {
-                this.setState({
-                    goodsData: data[0].goods
-                })
-            })
-        fetch('/json/homeNav.json')
-            .then(res => res.json())
-            .then(data => {
-                this.setState({
-                    nav_ul: data
-                })
-            })
+    async componentDidMount() {
+        // 打开页面立即渲染第一块商品列表
+        this.setState({
+            goodsData: (await this.Home_data())[0].goods
+        })
+
+        //商品导航数据
+        this.setState({
+            nav_ul: await this.Home_Nav_data()
+        })
+    }
+    // 首页商品列表数据请求
+    Home_data() {
+        return http.get('/good/homeGoods')
+    }
+    // 首页商品导航数据请求
+    Home_Nav_data() {
+        return http.get('/good/homeNav')
     }
     //点击后渲染对应数据
-    GoodsData(e, key) {
+    async GoodsData(e, key) {
         let id = e.currentTarget.id
         this.TabClassName(key)
-        fetch('/json/homeGoods.json')
-            .then(res => res.json())
-            .then(data => {
-                data.forEach(item => {
-                    if (item.id == id) {
-                        this.setState({
-                            goodsData: item.goods
-                        })
-                    }
+        let data = await this.Home_data()
+        data.forEach(item => {
+            if (item.id == id) {
+                this.setState({
+                    goodsData: item.goods
                 })
-            })
+            }
+        })
     }
     //用于className切换(选项卡)
     TabClassName(key) {
@@ -99,24 +102,10 @@ class Home extends Component {
                     <a className="home_search" title="搜索"></a>
                     <div className="home_nav" title="导航" onClick={() => { this.NavBoxStyle(true) }}></div>
                     {/* 隐藏的导航盒子 */}
-                    <div className="nav_box" style={this.state.NavBoxStyle == false ? { height: '0' } : { height: '100%' }}>
-                        <div className="nav_box_pop">
-                            <h1 className="nav_box_title">人气系列</h1>
-                            <ul className="nav_ul">
-                                <li>
-                                    {
-                                        this.state.nav_ul.map((item, index) => {
-                                            return <a key={index}>
-                                                <span>{item.title}</span>
-                                                <img src={item.img}></img>
-                                            </a>
-                                        })
-                                    }
-                                </li>
-                            </ul>
-                            <div onClick={() => { this.NavBoxStyle(false) }} className="nav_close"></div>
-                        </div>
-                    </div>
+                    <NavData style_boolean={[
+                        this.state.NavBoxStyle,
+                        this.NavBoxStyle
+                    ]} />
                 </div>
                 {/* 轮播图 */}
                 <div className="home_swiper">

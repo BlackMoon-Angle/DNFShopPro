@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './index.scss'
-
+import http from '../../utils/Http'
 class List extends Component {
     constructor() {
         super();
@@ -9,21 +9,17 @@ class List extends Component {
         }
     }
     //进入页面立刻渲染数据
-    componentDidMount() {
-        fetch('/json/listGoods.json')
-            .then(res => res.json())
-            .then(data => {
-                this.setState({
-                    list_goodsData: data
-                })
-            })
+    async componentDidMount() {
+        this.setState({
+            list_goodsData: await http.get('/good/listGoods')
+        })
     }
     render() {
         return (
             <div className="list_wrap">
                 {/* 头部 */}
                 <div className="list_head">
-                    <a onClick={() => {this.props.history.push('/home')}} className="back_home">
+                    <a onClick={() => { this.props.history.push('/home') }} className="back_home">
                         <i> ＜返回</i>
                     </a>
                     <h1 className="list_title">全部商品</h1>
