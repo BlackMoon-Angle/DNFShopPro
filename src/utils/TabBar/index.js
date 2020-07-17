@@ -17,11 +17,16 @@ class TabBarExample extends React.Component {
     constructor() {
         super();
         this.state = {
-            selectedTab: 'home',
+            selectedTab: '',
             hidden: false,
         };
     }
-
+    //监听路由变化，防止刷新页面时的路由高光不正确
+    componentDidMount() {
+        this.setState({
+            selectedTab: this.props.history.location.pathname
+        });
+    }
     renderContent(pageText) {
         return (
             <div></div>
@@ -38,7 +43,7 @@ class TabBarExample extends React.Component {
                 >
                     <TabBar.Item
                         title="首页"
-                        key="home"
+                        key="/home"
                         icon={<div style={{
                             width: '22px',
                             height: '22px',
@@ -53,11 +58,11 @@ class TabBarExample extends React.Component {
                         }}
                         />
                         }
-                        selected={this.state.selectedTab === 'home'}
+                        selected={this.state.selectedTab === '/home'}
                         // badge={1}
                         onPress={() => {
                             this.setState({
-                                selectedTab: 'home',
+                                selectedTab: '/home',
                             });
                             this.props.history.push('/home')
                         }}
@@ -83,14 +88,14 @@ class TabBarExample extends React.Component {
                             />
                         }
                         title="精选"
-                        key="list"
+                        key="/list"
                         // badge={'new'}
-                        selected={this.state.selectedTab === 'redTab'}
+                        selected={this.state.selectedTab === '/list'}
                         onPress={() => {
                             this.setState({
-                                selectedTab: 'redTab',
+                                selectedTab: '/list',
                             });
-                            this.props.history.push('/list/:id')
+                            this.props.history.push('/list')
                         }}
                         data-seed="logId1"
                     >
@@ -114,12 +119,12 @@ class TabBarExample extends React.Component {
                             />
                         }
                         title="购物车"
-                        key="cart"
+                        key="/shopcart"
                         // dot
-                        selected={this.state.selectedTab === 'greenTab'}
+                        selected={this.state.selectedTab === '/shopcart'}
                         onPress={() => {
                             this.setState({
-                                selectedTab: 'greenTab',
+                                selectedTab: '/shopcart',
                             });
                             this.props.history.push('/shopcart')
                         }}
@@ -130,11 +135,11 @@ class TabBarExample extends React.Component {
                         icon={{ uri: '' + user + '' }}
                         selectedIcon={{ uri: '' + user_color + '' }}
                         title="我的"
-                        key="user"
-                        selected={this.state.selectedTab === 'yellowTab'}
+                        key="/user"
+                        selected={this.state.selectedTab === '/user'}
                         onPress={() => {
                             this.setState({
-                                selectedTab: 'yellowTab',
+                                selectedTab: '/user',
                             });
                             this.props.history.push('/user')
                         }}

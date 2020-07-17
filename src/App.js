@@ -5,7 +5,7 @@ import '../public/css/common.css';
 
 //标签栏组件
 import 'antd-mobile/dist/antd-mobile.css';
-import TabBarExample from './pages/TabBar';
+import TabBarExample from './utils/TabBar';
 
 // 引入页面组件
 import Home from './pages/Home'
@@ -43,22 +43,23 @@ class App extends React.Component {
       path: '/user',
       icon: <User />,
       component: User,
-    }]
+    }],
+    route_pathname: ''
   }
   render() {
     return (
       <div className="App">
         <Switch>
           {/* 打开页面默认打开首页 */}
-          
+
           {/* 路由 */}
           <Route exact strict path='/home' component={Home} />
-          <Route exact strict path='/list/:id' component={List} />
+          <Route exact strict path='/list' component={List} />
           <Route exact strict path='/shopcart' component={ShopCart} />
           <Route exact strict path='/user' component={User} />
           <Redirect from='/' to='/home' exact strict />
         </Switch>
-        <TabBarExample />
+        <div><TabBarExample /></div>
       </div>
     )
   }

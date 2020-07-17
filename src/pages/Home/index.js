@@ -1,12 +1,18 @@
 import React, { Component } from 'react';
 import './index.scss';
 //轮播图组件
-import Swiper from './swiper'
+import Swiper from '../../utils/Swiper'
 
 class Home extends Component {
     constructor() {
         super();
         this.state = {
+            //用于传递给swiper组件
+            swiper_data: {
+                //轮播图的图片，用于传递给swiper组件
+                swiper_img: ['https://img.dnfcity.qq.com/goodsImages/xiaocx/bann54.jpg', 'https://img.dnfcity.qq.com/goodsImages/xiaocx/bann52.jpg'],
+                swiperImg_height: '60vw'//轮播图的高度，用于传递给swiper组件
+            },
             goodsData: [],//用于存储请求的首页商品数据
             nav_ul: [],//用于存储请求的首页导航数据
             goods_nav: [
@@ -114,7 +120,7 @@ class Home extends Component {
                 </div>
                 {/* 轮播图 */}
                 <div className="home_swiper">
-                    <Swiper />
+                    <Swiper data={this.state.swiper_data} />
                 </div>
                 {/* 商品区 */}
                 <div className="home_goods">
@@ -158,7 +164,7 @@ class Home extends Component {
                         </div>
                     </div>
                     {/* 查看更多——跳转到列表页 */}
-                    <div onClick={() => {this.props.history.push('/list/:id')}} className="home_router_list"></div>
+                    <div onClick={() => { this.props.history.push('/list') }} className="home_router_list"></div>
                 </div>
                 {/* 品牌区 */}
                 <div className="home_brand">

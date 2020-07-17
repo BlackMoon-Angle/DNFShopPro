@@ -1,0 +1,175 @@
+@function vw($px) {
+    @return ($px / 750) * 100vw
+}
+
+;
+
+.list_wrap {
+
+    .list_head {
+        width: 100%;
+        height: vw(200);
+        z-index: 999;
+        position: fixed;
+        background: #fff;
+
+        .back_home {
+            width: vw(120);
+            color: #424242;
+            margin-left: vw(15);
+            font-size: vw(35);
+            margin-top: vw(15);
+
+            i {
+                display: inline-block;
+                vertical-align: middle;
+                background-size: 100% auto;
+                background-position: center;
+                background-repeat: no-repeat;
+                font-style: normal;
+                position: relative;
+            }
+        }
+
+        .list_title {
+            font-family: "haipai";
+            font-size: vw(53.5);
+            width: vw(250);
+            height: vw(80);
+            line-height: vw(80);
+            position: absolute;
+            top: 0;
+            left: vw(50);
+            bottom: 0;
+            margin: auto;
+        }
+
+        .list_head_search {
+            display: block;
+            width: vw(58.5);
+            height: vw(58.5);
+            line-height: 1.8;
+            text-align: center;
+            color: #FFF;
+            font-size: vw(20);
+            position: absolute;
+            top: vw(75);
+            right: vw(170);
+            background: url(https://img.dnfcity.qq.com/weixin20/base/ico1.png) no-repeat;
+            background-size: 100% 100%;
+        }
+
+        .list_goodsNav {
+            display: block;
+            width: vw(75);
+            height: vw(48);
+            background: url(https://img.dnfcity.qq.com/weixin20/base/ico2.png) no-repeat;
+            background-size: 100% 100%;
+            position: absolute;
+            top: vw(80);
+            right: vw(30);
+        }
+
+        .list_goodsOption {
+            position: fixed;
+            width: vw(220);
+            top: vw(200);
+            z-index: 100;
+            margin-top: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: vw(50);
+
+            .goodsOption_box {
+                display: flex;
+                padding: vw(20) vw(15);
+                font-size: vw(30);
+
+                div {
+                    color: #666;
+                    margin-left: vw(18);
+
+                    i {
+                        display: inline-block;
+                        vertical-align: middle;
+                        background-size: 100% auto;
+                        background-position: center;
+                        background-repeat: no-repeat;
+                        font-style: normal;
+                        position: relative;
+                    }
+                }
+
+                .i_color {
+                    color: #ef524b;
+                }
+            }
+        }
+    }
+
+    .list_goods {
+        padding-top: vw(200);
+        height: calc(100% - 212px);
+        overflow: auto;
+        padding-bottom: vw(150);
+
+        .goods_data {
+            width: 96%;
+            margin: 0 auto;
+            padding-bottom: 20px;
+
+            ul {
+                li {
+                    padding: 0;
+                    overflow: hidden;
+                    position: relative;
+                    float: left;
+                    margin: vw(10) vw(8) vw(5) vw(5);
+                    width: 48%;
+                    box-sizing: border-box;
+                    background: #F2F1F6;
+                    border-radius: vw(10);
+                    box-shadow: 0px 0px vw(10) #7d7b7b;
+
+                    .goods_img {
+                        width: 100%;
+                        height: 100%;
+                        margin: vw(20) auto 0;
+
+                        img {
+                            display: block;
+                            width: 100%;
+                            height: 100%;
+                        }
+                    }
+
+                    .goods_name {
+                        display: block;
+                        color: #000;
+                        white-space: nowrap;
+                        text-overflow: ellipsis;
+                        overflow: hidden;
+                        text-align: center;
+                        font-size: vw(30);
+                    }
+
+                    .goods_price {
+                        display: block;
+                        color: #000;
+                        white-space: nowrap;
+                        text-overflow: ellipsis;
+                        overflow: hidden;
+                        text-align: center;
+                        margin-top: vw(30);
+
+                        font {
+                            color: #FD3C1C;
+                            font-size: vw(40);
+                            font-weight: bold;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
