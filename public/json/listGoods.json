@@ -2,7 +2,8 @@
         "id": "1",
         "img": "https://img.dnfcity.qq.com/goodsImages/mall2015/1799/da1.jpg",
         "title": "地下城与勇士·国风象棋",
-        "price": "368"
+        "price": "368",
+        "stock":"99"
     },
     {
         "id": "2",

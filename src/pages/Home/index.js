@@ -3,7 +3,7 @@ import './index.scss';
 import http from '../../utils/Http'
 //轮播图组件
 import Swiper from '../../utils/Swiper'
-//可显隐式商品导航
+//可显隐式商品导航组件
 import NavData from '../../utils/NavData'
 
 class Home extends Component {

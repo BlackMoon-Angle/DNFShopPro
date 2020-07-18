@@ -12,7 +12,6 @@ class NavData extends React.Component {
     }
     //立即请求商品导航数据
     async componentDidMount() {
-        console.log(this.props.style_boolean[0])
         this.setState({
             nav_ul: await http.get('/good/homeNav'),
         })

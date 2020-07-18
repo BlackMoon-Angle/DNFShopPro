@@ -33,6 +33,12 @@ class App extends React.Component {
       component: List,
     },
     {
+      title: '列表页',
+      path: '/detail/:id',
+      icon: <Detail />,
+      component: Detail,
+    },
+    {
       title: '购物车',
       path: '/shopcart',
       icon: <ShopCart />,
@@ -44,7 +50,33 @@ class App extends React.Component {
       icon: <User />,
       component: User,
     }],
-    route_pathname: ''
+    route_pathname: true
+  }
+  componentDidMount() {
+    //判断刷新后，页面是否停留在详细页
+    if (this.props.history.location.pathname.split('/')[1] == 'detail') {
+      this.setState({
+        route_pathname: false,
+      })
+    }
+    else {
+      this.setState({
+        route_pathname: true,
+      })
+    }
+    //监听路由变化
+    this.props.history.listen(route => {
+      if (route.pathname.split('/')[1] == 'detail') {
+        this.setState({
+          route_pathname: false,
+        })
+      }
+      else {
+        this.setState({
+          route_pathname: true,
+        })
+      }
+    })
   }
   render() {
     return (
@@ -55,14 +87,15 @@ class App extends React.Component {
           {/* 路由 */}
           <Route exact strict path='/home' component={Home} />
           <Route exact strict path='/list' component={List} />
+          <Route exact strict path='/detail/:id' component={Detail} />
           <Route exact strict path='/shopcart' component={ShopCart} />
           <Route exact strict path='/user' component={User} />
           <Redirect from='/' to='/home' exact strict />
         </Switch>
-        <div><TabBarExample /></div>
+        <div style={this.state.route_pathname == true ? { display: 'block' } : { display: 'none' }}><TabBarExample /></div>
       </div>
     )
   }
 }
 
-export default App;
+export default withRouter(App);

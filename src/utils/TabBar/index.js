@@ -23,6 +23,11 @@ class TabBarExample extends React.Component {
     }
     //监听路由变化，防止刷新页面时的路由高光不正确
     componentDidMount() {
+        this.props.history.listen(route => {
+            this.setState({
+                selectedTab: route.pathname
+            });
+          })
         this.setState({
             selectedTab: this.props.history.location.pathname
         });

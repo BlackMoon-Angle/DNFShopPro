@@ -25,16 +25,38 @@
             width: 77px;
             height: 27px;
         }
+
+        .cart_nav {
+            display: block;
+            width: vw(75);
+            height: vw(48);
+            background: url(https://img.dnfcity.qq.com/weixin20/base/ico3.png) no-repeat;
+            background-size: 100% 100%;
+            position: absolute;
+            top: vw(80);
+            right: vw(30);
+        }
     }
 
-    .cart_nav {
-        display: block;
-        width: vw(75);
-        height: vw(48);
-        background: url(https://img.dnfcity.qq.com/weixin20/base/ico3.png) no-repeat;
-        background-size: 100% 100%;
+    .cart_box {
+        width: 100%;
+        margin-top: 0px;
+        background: #f7f7f7;
         position: absolute;
-        top: vw(80);
-        right: vw(30);
+        top: 100px;
+
+        .true_cart {
+            width: 100%;
+            margin-top: 0px;
+            background: #f7f7f7;
+            position: absolute;
+            top: 100px;
+            overflow: auto;
+
+            .true_box {
+                padding: 10px 10px 10px 5px;
+                margin-bottom: 10px;
+            }
+        }
     }
 }

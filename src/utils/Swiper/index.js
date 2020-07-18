@@ -2,18 +2,29 @@ import React, { Component } from 'react';
 import { Carousel, WingBlank } from 'antd-mobile';
 class Swiper extends React.Component {
   state = {
-    data: this.props.data.swiper_img,//父组件传来的值——轮播图需要的图片
-    imgHeight: this.props.data.swiperImg_height//父组件传来的值——轮播图的高度
+    data: [],//父组件传来的值——轮播图需要的图片
+    imgHeight: ''//父组件传来的值——轮播图的高度
+  }
+  componentWillMount(){
+    // console.log(this.props.data)
+    this.setState({
+      data: this.props.data.swiper_img,
+      imgHeight: this.props.data.swiperImg_height
+    });
   }
   componentDidMount() {
-    // console.log(this.state.imgHeight)
     // simulate img loading
-    setTimeout(() => {
-      this.setState({
-        data: this.props.data.swiper_img,
-        imgHeight: this.props.data.swiperImg_height
-      });
-    }, 100);
+    // setTimeout(() => {
+    //   this.setState({
+    //     data: this.props.data.swiper_img,
+    //     imgHeight: this.props.data.swiperImg_height
+    //   });
+    // }, 100);
+    // console.log(this.props.data)
+    // this.setState({
+    //   data: this.props.data.swiper_img,
+    //   imgHeight: this.props.data.swiperImg_height
+    // });
   }
   render() {
     return (

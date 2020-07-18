@@ -53,16 +53,6 @@
             top: vw(80);
             right: vw(30);
         }
-
-        .nav_box {
-            width: 100%;
-            position: fixed;
-            top: 0;
-            left: 0;
-            background: rgba(255, 255, 255, 0.9);
-            z-index: 1000;
-            transition: 1s;
-        }
     }
 
     // 轮播图
