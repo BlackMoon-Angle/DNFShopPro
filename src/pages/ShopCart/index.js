@@ -16,7 +16,7 @@ class ShopCart extends Component {
         this.setState({
             cartData: await http.get('/good/cartData')
         })
-        // console.log(JSON.parse(this.state.cartData[0].detailData))
+        console.log(this.state.cartData)
         // this.state.cartData.forEach(item => {
         //     console.log(JSON.parse(item.detailData))
         // })

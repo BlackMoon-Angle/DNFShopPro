@@ -19,7 +19,7 @@ class Detail extends Component {
             detailData: [],
             swiper_data: {
                 //轮播图的图片，用于传递给swiper组件
-                swiper_img: ['https://img.dnfcity.qq.com/goodsImages/mall2015/1799/da4.jpg'],
+                swiper_img: ['', ''],
                 swiperImg_height: '91.8vw'//轮播图的高度，用于传递给swiper组件
             },
             name: '',//商品的名称
@@ -28,29 +28,14 @@ class Detail extends Component {
             stock: ''//库存
         }
         this.add_cart = this.add_cart.bind(this)
-        // this.swiper_data = this.swiper_data.bind(this)
     }
-    // async componentWillMount() {
-    //     let id = this.props.match.params.id;//获取路由传过来的id
-    //     const data = await http.get('/good/detail')
-    //     let detail_data = data.filter(item => item.id == id)
-    //     // console.log(detail_data[0].detail[0].swiperImg)
-    //     this.setState({
-    //         swiper_data: {
-    //             swiper_img: detail_data[0].detail[0].swiperImg
-    //         },
-    //         name: detail_data[0].detail[0].name,
-    //         price: detail_data[0].detail[0].price,
-    //         describe: detail_data[0].detail[0].describe
-    //     })
-    // }
     async componentDidMount() {
         let id = this.props.match.params.id;//获取路由传过来的id
         const data = await http.get('/good/detail')
         let detail_data = data.filter(item => item.id == id)
-        const arr = detail_data[0].detail[0]
+        const arr = detail_data[0].detail
         this.setState({
-            detailData: detail_data[0].detail,
+            detailData: arr,
             swiper_data: {
                 swiper_img: arr.swiperImg
             },
