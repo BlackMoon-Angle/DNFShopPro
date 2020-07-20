@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+//导航栏组件
+import { NavBar, Icon } from 'antd-mobile';
 
 class Login extends Component{
     render(){

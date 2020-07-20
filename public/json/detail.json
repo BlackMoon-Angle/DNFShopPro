@@ -5,6 +5,7 @@
             "price": "368",
             "stock": "99",
             "buy_num": "1",
+            "checked": false,
             "describe": "地下城与勇士·国风象棋上线！购买可获赠专属国风装扮和武器装扮！",
             "swiperImg": [
                 "https://img.dnfcity.qq.com/goodsImages/mall2015/1799/da1.jpg",
@@ -21,6 +22,7 @@
             "price": "299",
             "stock": "99",
             "buy_num": "1",
+            "checked": false,
             "describe": "战力激“增”  “福”气满满  全新典藏包耀世登场！",
             "swiperImg": [
                 "https://img.dnfcity.qq.com/goodsImages/mall2015/1750/da1.jpg",
@@ -37,6 +39,7 @@
             "price": "299",
             "stock": "99",
             "buy_num": "1",
+            "checked": false,
             "describe": "萌萌赛丽亚，暖暖中国风！赛丽亚国风特典惊喜上架！购买额外获赛丽亚暖心礼盒！",
             "swiperImg": [
                 "https://img.dnfcity.qq.com/goodsImages/mall2015/1561/da1.jpg",
@@ -53,6 +56,7 @@
             "price": "299",
             "stock": "99",
             "buy_num": "1",
+            "checked": false,
             "describe": "天帝二觉礼盒震撼上架！",
             "swiperImg": [
                 "https://img.dnfcity.qq.com/goodsImages/mall2015/1583/da1.jpg",
@@ -69,6 +73,7 @@
             "price": "2999",
             "stock": "99",
             "buy_num": "1",
+            "checked": false,
             "describe": "伊希斯·普雷雕塑来袭！",
             "swiperImg": [
                 "https://img.dnfcity.qq.com/goodsImages/mall2015/1748/da1.jpg",
@@ -85,6 +90,7 @@
             "price": "159",
             "stock": "99",
             "buy_num": "1",
+            "checked": false,
             "describe": "刀斩肉身，心斩灵魂！天帝二觉手办震撼上架！",
             "swiperImg": [
                 "https://img.dnfcity.qq.com/goodsImages/mall2015/1582/da1.jpg",
@@ -101,6 +107,7 @@
             "price": "158",
             "stock": "99",
             "buy_num": "1",
+            "checked": false,
             "describe": "黑暗现世，裁决莅临！裁决女神二觉手办新品上市！",
             "swiperImg": [
                 "https://img.dnfcity.qq.com/goodsImages/mall2015/1566/da1.jpg",
@@ -117,6 +124,7 @@
             "price": "299",
             "stock": "99",
             "buy_num": "1",
+            "checked": false,
             "describe": "送全职业泰拉武器装扮！",
             "swiperImg": [
                 "https://img.dnfcity.qq.com/goodsImages/mall2015/1503/da1.jpg",
@@ -133,6 +141,7 @@
             "price": "128",
             "stock": "99",
             "buy_num": "1",
+            "checked": false,
             "describe": "个性定制服务全新上线 快来打造你的专属服装吧！",
             "swiperImg": [
                 "https://img.dnfcity.qq.com/goodsImages/mall2015/1652/da2.jpg",
@@ -149,6 +158,7 @@
             "price": "426",
             "stock": "99",
             "buy_num": "1",
+            "checked": false,
             "describe": "从天而降的那一刻起，魔界再无宁日。为了将它纳入囊中，卡修派不惜倾巢而出，各大组织也蠢蠢欲动。灾难抑或希望…没人知道它将为魔界的未来创造怎样的可能性……",
             "swiperImg": [
                 "https://img.dnfcity.qq.com/goodsImages/mall2015/1736/da1.jpg",
@@ -165,6 +175,7 @@
             "price": "2399",
             "stock": "99",
             "buy_num": "1",
+            "checked": false,
             "describe": "女大枪-风暴骑兵雕塑全新上线！",
             "swiperImg": [
                 "https://img.dnfcity.qq.com/goodsImages/mall2015/1507/da1.jpg",
@@ -181,6 +192,7 @@
             "price": "299",
             "stock": "99",
             "buy_num": "1",
+            "checked": false,
             "describe": "DNF官方设定集·神之卷震撼上线！",
             "swiperImg": [
                 "https://img.dnfcity.qq.com/goodsImages/mall2015/1665/da1.jpg",
@@ -197,6 +209,7 @@
             "price": "158",
             "stock": "99",
             "buy_num": "1",
+            "checked": false,
             "describe": "魔道出击 萌杀四方！古灵精怪二觉手办新品上市！",
             "swiperImg": [
                 "https://img.dnfcity.qq.com/goodsImages/mall2015/1644/da1.jpg",
@@ -213,6 +226,7 @@
             "price": "299",
             "stock": "99",
             "buy_num": "1",
+            "checked": false,
             "describe": "裁决女神 礼盒震撼上架！",
             "swiperImg": [
                 "https://img.dnfcity.qq.com/goodsImages/mall2015/1667/da1.jpg",
@@ -229,6 +243,7 @@
             "price": "599",
             "stock": "99",
             "buy_num": "1",
+            "checked": false,
             "describe": "产品包含：女圣职异色手办*1、武器模型*1、专属异色版收藏卡*1，本产品不含气血特效件，气血背景为原画，购买即可领取游戏道具！",
             "swiperImg": [
                 "https://img.dnfcity.qq.com/goodsImages/mall2015/1492/da1.jpg",
@@ -245,6 +260,7 @@
             "price": "1500",
             "stock": "99",
             "buy_num": "1",
+            "checked": false,
             "describe": "DNF周边匠工出品，性价比最高手办！重达7.5Kg，赠：稀有克隆装扮一件、礼包限量专属光环一个！",
             "swiperImg": [
                 "https://img.dnfcity.qq.com/goodsImages/mall2015/1041/da1.jpg",
