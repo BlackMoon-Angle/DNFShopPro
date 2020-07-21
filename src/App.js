@@ -15,6 +15,7 @@ import ShopCart from './pages/ShopCart'
 import User from './pages/User'
 import Login from './pages/Login'
 import Register from './pages/Register'
+import Modify from './pages/ModifyPaw'
 
 
 class App extends React.Component {
@@ -61,6 +62,12 @@ class App extends React.Component {
       path: '/register',
       icon: <Register />,
       component: Register,
+    },
+    {
+      title: '修改密码',
+      path: '/modify',
+      icon: <Modify />,
+      component: Modify,
     }],
     route_pathname: true
   }
@@ -104,6 +111,7 @@ class App extends React.Component {
           <Route exact strict path='/user' component={User} />
           <Route exact strict path='/login' component={Login} />
           <Route exact strict path='/register' component={Register} />
+          <Route exact strict path='/modify' component={Modify} />
           <Redirect from='/' to='/home' exact strict />
         </Switch>
         <div style={this.state.route_pathname == true ? { display: 'block' } : { display: 'none' }}><TabBarExample /></div>

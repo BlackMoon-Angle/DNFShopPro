@@ -24,7 +24,7 @@ export async function Cart_data() {
     return await http.get('/good/cartData')
 }
 
-/*-------------------------------------购物车操作------------------------------------- */
+/*-------------------------------------购物车操作(未使用)------------------------------------- */
 // 加入购物车
 export async function Add_cart(id, data) {
     return await http.post('/good/addCart', {
