@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import http from '../Http'
 import './index.scss'
-
+//商品数据Api
+import { Home_Nav_data } from '../../api/GoodsApi'
 class NavData extends React.Component {
     constructor() {
         super();
@@ -13,7 +14,7 @@ class NavData extends React.Component {
     //立即请求商品导航数据
     async componentDidMount() {
         this.setState({
-            nav_ul: await http.get('/good/homeNav'),
+            nav_ul: await Home_Nav_data(),
         })
     }
     NavBoxStyle(boolean) {

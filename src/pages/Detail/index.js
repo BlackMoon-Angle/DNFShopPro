@@ -12,6 +12,9 @@ import { Toast, WhiteSpace, WingBlank, Button } from 'antd-mobile';
 import backHome from '../../../public/img/home/home.png'
 import collect from '../../../public/img/collect/collect.png'
 
+// 商品数据请求
+import { Detail_data, Add_cart } from '../../api/GoodsApi'
+
 class Detail extends Component {
     constructor() {
         super();
@@ -31,7 +34,7 @@ class Detail extends Component {
     }
     async componentDidMount() {
         let id = this.props.match.params.id;//获取路由传过来的id
-        const data = await http.get('/good/detail')
+        const data = await Detail_data()
         let detail_data = data.filter(item => item.id == id)
         const arr = detail_data[0].detail
         this.setState({
@@ -48,10 +51,7 @@ class Detail extends Component {
     //加入购物车事件
     async add_cart() {
         let id = this.props.match.params.id;//获取路由传过来的id
-        const data = await http.post('/good/addCart', {
-            id: id,
-            detailData: JSON.stringify(this.state.detailData)
-        })
+        const data = await Add_cart(id, this.state.detailData)
         if (data.flag) {
             Toast.success('添加购物车成功！', 1.5);
         }

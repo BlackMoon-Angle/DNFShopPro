@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import './index.scss';
-import http from '../../utils/Http'
 //轮播图组件
 import Swiper from '../../utils/Swiper'
 //可显隐式商品导航组件
 import NavData from '../../utils/NavData'
+// 商品请求Api
+import { Home_data } from '../../api/GoodsApi'
 
 class Home extends Component {
     constructor() {
@@ -48,31 +49,18 @@ class Home extends Component {
         this.TabClassName = this.TabClassName.bind(this)
         this.NavBoxStyle = this.NavBoxStyle.bind(this)
     }
-    //进入页面立刻渲染数据
+    进入页面立刻渲染数据
     async componentDidMount() {
         // 打开页面立即渲染第一块商品列表
         this.setState({
-            goodsData: (await this.Home_data())[0].goods
+            goodsData: (await Home_data())[0].goods
         })
-
-        //商品导航数据
-        this.setState({
-            nav_ul: await this.Home_Nav_data()
-        })
-    }
-    // 首页商品列表数据请求
-    Home_data() {
-        return http.get('/good/homeGoods')
-    }
-    // 首页商品导航数据请求
-    Home_Nav_data() {
-        return http.get('/good/homeNav')
     }
     //点击后渲染对应数据
     async GoodsData(e, key) {
         let id = e.currentTarget.id
         this.TabClassName(key)
-        let data = await this.Home_data()
+        let data = await Home_data()
         data.forEach(item => {
             if (item.id == id) {
                 this.setState({

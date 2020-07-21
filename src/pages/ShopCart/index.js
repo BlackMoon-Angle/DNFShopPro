@@ -1,27 +1,35 @@
 import React, { Component } from 'react';
 import './index.scss'
-import http from '../../utils/Http'
 //可显隐式商品导航组件
 import NavData from '../../utils/NavData'
+//商品数据Api
+import { Cart_data, Modify_cart, add_num, reduce_num, delete_data, all_checked_data } from '../../api/GoodsApi'
 //复选框组件
 import { List, Checkbox, Flex } from 'antd-mobile';
 const CheckboxItem = Checkbox.CheckboxItem;
 const AgreeItem = Checkbox.AgreeItem;
+
 class ShopCart extends Component {
     constructor() {
         super();
         this.state = {
             NavBoxStyle: false,//用于导航盒子的显示和隐藏
             cartData: [],//用于存放请求回来的购物商品数据
-            val: 3,
-            val1: 2,
+            Total_price: 0,//总价
+            Purchase_quantity: 0,//购买数量
         }
         this.NavBoxStyle = this.NavBoxStyle.bind(this)
+        this.add_num = this.add_num.bind(this)
+        this.reduce_num = this.reduce_num.bind(this)
+        this.refresh = this.refresh.bind(this)
+        this.delete = this.delete.bind(this)
+        this.all_checked = this.all_checked.bind(this)
     }
     async componentDidMount() {
         this.setState({
-            cartData: await http.get('/good/cartData')
+            cartData: await Cart_data()
         })
+        this.refresh()
     }
     //用于切换导航盒子显隐
     NavBoxStyle(boolean) {
@@ -29,15 +37,85 @@ class ShopCart extends Component {
             NavBoxStyle: boolean
         })
     }
+    //切换复选框操作
     async onChange(id, e_bol) {
         let boolean = e_bol
-        const data = await http.put('/good/modifycart', {
-            id: id,
-            id_bol: boolean
+        const data = await Modify_cart(id, boolean)
+        this.setState({
+            cartData: await Cart_data()
+        })
+        this.refresh()
+    }
+    //增加商品购买数量
+    async add_num(id, num, stock_num) {
+        //与库存相互对比
+        if (num < stock_num) {
+            num++;
+            const data = await add_num(id, num)
+            this.setState({
+                cartData: await Cart_data()
+            })
+            this.refresh()
+        }
+        if (num >= stock_num) {
+            num = stock_num
+            const data = await add_num(id, num)
+            this.setState({
+                cartData: await Cart_data()
+            })
+            this.refresh()
+        }
+    }
+    //减少商品购买数量
+    async reduce_num(id, num) {
+        if (num > 1) {
+            num--
+            const data = await reduce_num(id, num)
+            this.setState({
+                cartData: await Cart_data()
+            })
+            this.refresh()
+        }
+        if (num <= 1) {
+            num = 1
+            const data = await reduce_num(id, num)
+            this.setState({
+                cartData: await Cart_data()
+            })
+            this.refresh()
+        }
+    }
+    //刷新，用于总价与购买数量
+    refresh() {
+        let all_pri = 0;
+        let all_buy_num = 0;
+        this.state.cartData.forEach(item => {
+            if (item.detailData.checked == true) {
+                all_pri += item.detailData.buy_num * item.detailData.price
+                all_buy_num += item.detailData.buy_num * 1
+            }
         })
         this.setState({
-            cartData: await http.get('/good/cartData')
+            Total_price: all_pri,
+            Purchase_quantity: all_buy_num
         })
+    }
+    //删除按钮
+    async delete() {
+        const data = await delete_data()
+        this.setState({
+            cartData: await Cart_data()
+        })
+        this.refresh()
+    }
+    //全选按钮
+    async all_checked() {
+        const data = await all_checked_data()
+        console.log(data)
+        this.setState({
+            cartData: await Cart_data()
+        })
+        this.refresh()
     }
     render() {
         return (
@@ -51,6 +129,7 @@ class ShopCart extends Component {
                         this.state.NavBoxStyle,
                         this.NavBoxStyle
                     ]} />
+                    <a className="delete_data" onClick={() => this.delete()}>删除</a>
                 </div>
                 {/* 购物车主体 */}
                 <div className="cart_box">
@@ -80,9 +159,9 @@ class ShopCart extends Component {
                                         </div>
                                         {/* 增加与减少 */}
                                         <div className="del_btnNum">
-                                            <a className="add_btn"></a>
-                                            <input defaultValue={item.detailData.buy_num} />
-                                            <a className="reduce_btn"></a>
+                                            <a className="add_btn" onClick={() => this.reduce_num(item.id, item.detailData.buy_num)}></a>
+                                            <input value={item.detailData.buy_num} onChange={this.componentDidMount} />
+                                            <a className="reduce_btn" onClick={() => this.add_num(item.id, item.detailData.buy_num, item.detailData.stock)}></a>
                                         </div>
                                     </CheckboxItem>
                                 ))}
@@ -98,20 +177,20 @@ class ShopCart extends Component {
                     </div>
                 </div>
                 {/* 结算盒子 */}
-                <div className="Check_out">
-                    <CheckboxItem>
+                <div className="Check_out" style={this.state.cartData.length ? { display: 'block' } : { display: 'none' }}>
+                    <CheckboxItem onChange={() => this.all_checked()}>
                         <p className="all_checked">全选</p>
                         {/* 总价与购买数量 */}
                         <div className="price_num">
                             <p className="total_price">共计：
-                                <font>¥ 0.00</font>
+                                <font>¥ {this.state.Total_price}.00</font>
                             </p>
                             <p className="all_num">数量：
-                                <font>0件</font>
+                                <font>{this.state.Purchase_quantity}件</font>
                             </p>
                         </div>
                         {/* 结算按钮 */}
-                        <div className="settlement" style={this.state.cartData.length ? { display: 'block' } : { display: 'none' }}>结算</div>
+                        <div className="settlement">结算</div>
                     </CheckboxItem>
                 </div>
             </div>

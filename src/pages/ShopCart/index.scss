@@ -36,6 +36,14 @@
             top: vw(80);
             right: vw(30);
         }
+
+        .delete_data {
+            position: absolute;
+            right: vw(35);
+            bottom: vw(10);
+            font-size: vw(35);
+            color: white;
+        }
     }
 
     .cart_box {
@@ -124,33 +132,33 @@
                             .add_btn {
                                 border: 1px solid #999;
                                 color: #999;
-                                height: 21px;
-                                width: 21px;
-                                line-height: 21px;
+                                height: vw(42);
+                                width: vw(42);
+                                line-height: vw(42);
                                 display: inline-block;
                                 position: relative;
                                 border-radius: 50%;
-                                vertical-align: -6px;
+                                vertical-align: vw(-12);
                             }
 
                             .add_btn::before {
                                 background-color: #999;
                                 content: " ";
                                 position: absolute;
-                                height: 1px;
-                                width: 11px;
+                                height: vw(2);
+                                width: vw(22);
                                 left: 50%;
                                 top: 50%;
-                                margin-left: -5.5px;
+                                margin-left: vw(-11);
                             }
 
                             input {
-                                border: 1px solid #F6F6F6;
-                                width: 40px;
-                                height: 20px;
-                                border-radius: 5px;
-                                font-size: 14px;
-                                box-shadow: inset 0px 0px 5px #999;
+                                border: vw(2) solid #F6F6F6;
+                                width: vw(80);
+                                height: vw(40);
+                                border-radius: vw(10);
+                                font-size: vw(28);
+                                box-shadow: inset 0 0 vw(10) #999;
                                 outline-style: none;
                                 text-align: center;
                                 color: #5f646e;
@@ -160,33 +168,33 @@
                                 background-color: #999;
                                 border: 1px solid #999;
                                 color: #999;
-                                height: 21px;
-                                width: 21px;
-                                line-height: 21px;
+                                height: vw(42);
+                                width: vw(42);
+                                line-height: vw(42);
                                 display: inline-block;
                                 position: relative;
                                 border-radius: 50%;
-                                vertical-align: -6px;
+                                vertical-align: vw(-12);
                             }
 
                             .reduce_btn::before {
                                 content: " ";
                                 position: absolute;
-                                height: 1px;
-                                width: 11px;
+                                height: vw(2);
+                                width: vw(22);
                                 left: 50%;
                                 top: 50%;
-                                margin-left: -5.5px;
+                                margin-left: vw(-11);
                                 background-color: #fff;
                             }
 
                             .reduce_btn::after {
                                 content: " ";
                                 position: absolute;
-                                height: 11px;
-                                width: 1px;
-                                margin-top: -5.5px;
-                                margin-left: -1px;
+                                height: vw(22);
+                                width: vw(2);
+                                margin-top: vw(-10);
+                                margin-left: vw(-1.5);
                                 left: 50%;
                                 top: 50%;
                                 background-color: #fff;
@@ -204,7 +212,7 @@
 
             img {
                 width: 60%;
-                height: 100%;
+                height: 90%;
                 position: absolute;
                 left: 0;
                 right: 0;
@@ -216,7 +224,7 @@
     }
 
     .Check_out {
-        z-index: 999;
+        z-index: 2;
         position: fixed;
         bottom: vw(100);
         display: flex;
@@ -237,7 +245,7 @@
                     justify-content: space-between;
 
                     .price_num {
-                        margin-left: vw(200);
+                        margin-left: vw(150);
 
                         .total_price {
                             font-size: vw(25);
@@ -256,13 +264,13 @@
                         background: #555;
                         color: #999;
                         text-align: center;
-                        line-height: 40px;
-                        height: 40px;
-                        margin-right: 10px;
-                        margin-top: 5px;
-                        -webkit-border-radius: 30px;
-                        -moz-border-radius: 30px;
-                        border-radius: 30px;
+                        line-height: vw(80);
+                        height: vw(80);
+                        margin-right: vw(20);
+                        margin-top: vw(10);
+                        -webkit-border-radius: vw(60);
+                        -moz-border-radius: vw(60);
+                        border-radius: vw(60);
                         padding: 0 vw(60);
                     }
 

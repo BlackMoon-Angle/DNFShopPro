@@ -55,6 +55,12 @@ class App extends React.Component {
       path: '/login',
       icon: <Login />,
       component: Login,
+    },
+    {
+      title: '注册',
+      path: '/register',
+      icon: <Register />,
+      component: Register,
     }],
     route_pathname: true
   }
@@ -97,6 +103,7 @@ class App extends React.Component {
           <Route exact strict path='/shopcart' component={ShopCart} />
           <Route exact strict path='/user' component={User} />
           <Route exact strict path='/login' component={Login} />
+          <Route exact strict path='/register' component={Register} />
           <Redirect from='/' to='/home' exact strict />
         </Switch>
         <div style={this.state.route_pathname == true ? { display: 'block' } : { display: 'none' }}><TabBarExample /></div>

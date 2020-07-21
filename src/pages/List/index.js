@@ -4,6 +4,8 @@ import http from '../../utils/Http'
 import { withRouter } from 'react-router-dom'
 //可显隐式商品导航组件
 import NavData from '../../utils/NavData'
+// 商品请求Api
+import { List_data } from '../../api/GoodsApi'
 class List extends Component {
     constructor() {
         super();
@@ -17,7 +19,7 @@ class List extends Component {
     //进入页面立刻渲染数据
     async componentDidMount() {
         this.setState({
-            list_goodsData: await http.get('/good/listGoods')
+            list_goodsData: await List_data()
         })
     }
     //用于切换导航盒子显隐
