@@ -15,11 +15,27 @@ import collect from '../../../public/img/collect/collect.png'
 // 商品数据请求
 import { Detail_data, Add_cart } from '../../api/GoodsApi'
 
+let ShopCartInfo = {
+    getData() {
+        //获取数据
+        let list = localStorage.getItem("ShopCartInfo");
+        if (list) {
+            return JSON.parse(list);
+        } else {
+            return [];
+        }
+    },
+    setData(data) {
+        //保存数据
+        localStorage.setItem("ShopCartInfo", JSON.stringify(data));
+    }
+};
 class Detail extends Component {
     constructor() {
         super();
         this.state = {
-            detailData: [],
+            detailData: [],//存放请求回来的详细页数据
+            local_date: ShopCartInfo.getData(),//获取前端的local
             swiper_data: {
                 //轮播图的图片，用于传递给swiper组件
                 swiper_img: ['', ''],
@@ -38,7 +54,7 @@ class Detail extends Component {
         let detail_data = data.filter(item => item.id == id)
         const arr = detail_data[0].detail
         this.setState({
-            detailData: arr,
+            detailData: detail_data,
             swiper_data: {
                 swiper_img: arr.swiperImg
             },
@@ -47,17 +63,36 @@ class Detail extends Component {
             describe: arr.describe,
             stock: arr.stock
         })
+        ShopCartInfo.getData();
     }
     //加入购物车事件
     async add_cart() {
+        //前端操作——将商品数据添加到local中
         let id = this.props.match.params.id;//获取路由传过来的id
-        const data = await Add_cart(id, this.state.detailData)
-        if (data.flag) {
+        let index = -1
+        index = this.state.local_date.findIndex(item => {
+            return item[0].id == id
+        })
+        if (index == -1) {
+            this.state.local_date.push(this.state.detailData)
+            ShopCartInfo.setData(this.state.local_date);
+            this.setState({
+                local_date: ShopCartInfo.getData()
+            })
             Toast.success('添加购物车成功！', 1.5);
         }
         else {
             Toast.fail('添加购物车失败，购物车中已存在该商品！', 1.5);
         }
+        // //数据库操作——添加指定商品到数据库
+        // let id = this.props.match.params.id;//获取路由传过来的id
+        // const data = await Add_cart(id, this.state.detailData)
+        // if (data.flag) {
+        //     Toast.success('添加购物车成功！', 1.5);
+        // }
+        // else {
+        //     Toast.fail('添加购物车失败，购物车中已存在该商品！', 1.5);
+        // }
     }
     render() {
         return (
