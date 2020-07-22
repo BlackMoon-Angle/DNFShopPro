@@ -1,22 +1,31 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom'
 import '../public/css/common.css';
-
-
 //标签栏组件
 import 'antd-mobile/dist/antd-mobile.css';
 import TabBarExample from './utils/TabBar';
+//加载显示组件
+import Loading from './utils/Loading'
 
-// 引入页面组件
-import Home from './pages/Home'
-import List from './pages/List'
-import Detail from './pages/Detail'
-import ShopCart from './pages/ShopCart'
-import User from './pages/User'
-import Login from './pages/Login'
-import Register from './pages/Register'
-import Modify from './pages/ModifyPaw'
+// // 引入页面组件
+// import Home from './pages/Home'
+// import List from './pages/List'
+// import Detail from './pages/Detail'
+// import ShopCart from './pages/ShopCart'
+// import User from './pages/User'
+// import Login from './pages/Login'
+// import Register from './pages/Register'
+// import Modify from './pages/ModifyPaw'
 
+//路由懒加载配置
+const Home = lazy(() => import("./pages/Home"))
+const List = lazy(() => import("./pages/List"))
+const Detail = lazy(() => import("./pages/Detail"))
+const ShopCart = lazy(() => import("./pages/ShopCart"))
+const User = lazy(() => import("./pages/User"))
+const Login = lazy(() => import("./pages/Login"))
+const Register = lazy(() => import("./pages/Register"))
+const Modify = lazy(() => import("./pages/ModifyPaw"))
 
 class App extends React.Component {
   state = {
@@ -100,20 +109,22 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <Switch>
-          {/* 打开页面默认打开首页 */}
+        <Suspense fallback={<Loading />}>
+          <Switch>
+            {/* 打开页面默认打开首页 */}
 
-          {/* 路由 */}
-          <Route exact strict path='/home' component={Home} />
-          <Route exact strict path='/list' component={List} />
-          <Route exact strict path='/detail/:id' component={Detail} />
-          <Route exact strict path='/shopcart' component={ShopCart} />
-          <Route exact strict path='/user' component={User} />
-          <Route exact strict path='/login' component={Login} />
-          <Route exact strict path='/register' component={Register} />
-          <Route exact strict path='/modify' component={Modify} />
-          <Redirect from='/' to='/home' exact strict />
-        </Switch>
+            {/* 路由 */}
+            <Route exact strict path='/home' component={Home} />
+            <Route exact strict path='/list' component={List} />
+            <Route exact strict path='/detail/:id' component={Detail} />
+            <Route exact strict path='/shopcart' component={ShopCart} />
+            <Route exact strict path='/user' component={User} />
+            <Route exact strict path='/login' component={Login} />
+            <Route exact strict path='/register' component={Register} />
+            <Route exact strict path='/modify' component={Modify} />
+            <Redirect from='/' to='/home' exact strict />
+          </Switch>
+        </Suspense>
         <div style={this.state.route_pathname == true ? { display: 'block' } : { display: 'none' }}><TabBarExample /></div>
       </div>
     )

@@ -11,7 +11,8 @@ class List extends Component {
         super();
         this.state = {
             list_goodsData: [],//用于存储请求的列表页商品数据
-            NavBoxStyle: false//用于导航盒子的显示和隐藏
+            NavBoxStyle: false,//用于导航盒子的显示和隐藏
+            i_color: 'default'
         }
         this.NavBoxStyle = this.NavBoxStyle.bind(this)
         this.List_li_Id = this.List_li_Id.bind(this)
@@ -33,6 +34,37 @@ class List extends Component {
         let id = e.currentTarget.id
         this.props.history.push('/detail/' + id)
     }
+    // 升序价格
+    ascending() {
+        let data = this.state.list_goodsData;
+        data.sort((a, b) => {
+            //排序基于的数据
+            return b.price - a.price;
+        });
+        this.setState({
+            list_goodsData: data,
+            i_color: 'ascending'
+        })
+    }
+    // 降序价格
+    descending() {
+        let data = this.state.list_goodsData;
+        data.sort((a, b) => {
+            //排序基于的数据
+            return a.price - b.price;
+        });
+        this.setState({
+            list_goodsData: data,
+            i_color: 'descending'
+        })
+    }
+    //默认排序
+    async default_data() {
+        this.setState({
+            list_goodsData: await List_data(),
+            i_color: 'default'
+        })
+    }
     render() {
         return (
             <div className="list_wrap">
@@ -52,11 +84,23 @@ class List extends Component {
                     {/* 商品排列选项 */}
                     <div className="list_goodsOption">
                         <div className="goodsOption_box">
-                            <div className="i_color">
-                                <i>默认</i>
+                            <div>
+                                <i
+                                    onClick={() => this.default_data()}
+                                    className={this.state.i_color == 'default' ? "i_color" : ""}
+                                >默认</i>
                             </div>
                             <div>
-                                <i>价格</i>
+                                <i
+                                    onClick={() => this.ascending()}
+                                    className={this.state.i_color == 'ascending' ? "i_color" : ""}
+                                >↑价格</i>
+                            </div>
+                            <div>
+                                <i
+                                    onClick={() => this.descending()}
+                                    className={this.state.i_color == 'descending' ? "i_color" : ""}
+                                >↓价格</i>
                             </div>
                         </div>
                     </div>

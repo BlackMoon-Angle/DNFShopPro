@@ -44,9 +44,11 @@ class Detail extends Component {
             name: '',//商品的名称
             price: '',//商品的价格
             describe: '',//商品的介绍
-            stock: ''//库存
+            stock: '',//库存
+            buy_num: 0//用于记录购买数量
         }
         this.add_cart = this.add_cart.bind(this)
+        this.count_BuyNum = this.count_BuyNum.bind(this)
     }
     async componentDidMount() {
         let id = this.props.match.params.id;//获取路由传过来的id
@@ -64,6 +66,18 @@ class Detail extends Component {
             stock: arr.stock
         })
         ShopCartInfo.getData();
+        this.count_BuyNum();
+    }
+    //计算购买数量
+    count_BuyNum() {
+        let NewNum = 0
+        let data = ShopCartInfo.getData()
+        data.forEach(item => {
+            NewNum += item[0].detail.buy_num * 1
+        })
+        this.setState({
+            buy_num: NewNum
+        })
     }
     //加入购物车事件
     async add_cart() {
@@ -79,6 +93,7 @@ class Detail extends Component {
             this.setState({
                 local_date: ShopCartInfo.getData()
             })
+            this.count_BuyNum();
             Toast.success('添加购物车成功！', 1.5);
         }
         else {
@@ -127,7 +142,7 @@ class Detail extends Component {
                         <div className="detail_cart">
                             <a onClick={() => { this.props.history.push('/shopcart') }}>
                                 <img src={cart}></img>
-                                <span>0</span>
+                                <span>{this.state.buy_num}</span>
                             </a>
                         </div>
                     </div>

@@ -24,8 +24,64 @@ import address from '../../../public/img/address/address.png'
 import data from '../../../public/img/data/data.png'
 //售后图标
 import sale from '../../../public/img/sale/sale.png'
+//token验证接口
+import { token_verify } from '../../api/UserApi'
+//对话框组件
+import { Modal, Button, WhiteSpace, WingBlank, Toast } from 'antd-mobile';
+const alert = Modal.alert;
 
+let LoginInfo = {
+    getData() {
+        //获取数据
+        let list = localStorage.getItem("LoginToken");
+        if (list) {
+            return JSON.parse(list);
+        } else {
+            return [];
+        }
+    },
+    setData(data) {
+        //保存数据
+        localStorage.setItem("LoginToken", JSON.stringify(data));
+    }
+};
 class User extends Component {
+    constructor() {
+        super();
+        this.state = {
+            user_box: false,//用于判断用户是否登录
+            username: ''//登录成功后，显示用户名在页面
+        }
+        this.login_out_Btn = this.login_out_Btn.bind(this)
+        this.login_out = this.login_out.bind(this)
+    }
+    async componentDidMount() {
+        const token = LoginInfo.getData();
+        const data = await token_verify(token)
+        if (data.flag) {
+            this.setState({
+                user_box: true,
+                username: data.username
+            })
+        }
+        else {
+            this.setState({
+                user_box: false
+            })
+        }
+    }
+    //退出登录提示
+    login_out_Btn() {
+        alert('退出登录提示', '确认退出登录？', [
+            { text: '取消' },
+            { text: '确认', onPress: () => this.login_out() },
+        ])
+    }
+    //退出登录事件
+    login_out() {
+        localStorage.removeItem('LoginToken');
+        window.location.reload()
+    }
     render() {
         return (
             <div className="user_box">
@@ -34,12 +90,15 @@ class User extends Component {
                     <div className="user_img">
                         <img src="https://dnfcity.qq.com/mobile/imgjs/img/user/top_img.png"></img>
                     </div>
-                    {/* <div className="user_name">
+                    <div className="user_name" style={this.state.user_box == true ? { display: 'block' } : { display: 'none' }}>
                         玩家昵称(
-                        <span className="username">老王</span>
+                        <span className="username">{this.state.username}</span>
                         )
-                    </div> */}
-                    <div className="user_name" onClick={() => { this.props.history.push('/login') }}>
+                    </div>
+                    <div className="user_name"
+                        onClick={() => { this.props.history.push('/login') }}
+                        style={this.state.user_box == false ? { display: 'block' } : { display: 'none' }}
+                    >
                         <span className="username">请登录</span>
                     </div>
                 </div>
@@ -145,6 +204,12 @@ class User extends Component {
                                 <p>售后服务</p>
                             </div>
                             <div className="order_symbol"></div>
+                        </a>
+                        {/* 退出登录按钮 */}
+                        <a className="order_a login_out" style={this.state.user_box == true ? { display: 'block' } : { display: 'none' }}>
+                            <div className="order_box login_out_box">
+                                <p onClick={() => this.login_out_Btn()}>退出登录</p>
+                            </div>
                         </a>
                     </div>
                 </div>

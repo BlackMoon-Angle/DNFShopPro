@@ -4,9 +4,14 @@ import './index.scss'
 import NavData from '../../utils/NavData'
 //商品数据Api
 import { Cart_data, Modify_cart, add_num, reduce_num, delete_data, all_checked_data } from '../../api/GoodsApi'
+//token验证
+import { token_verify } from '../../api/UserApi'
 //复选框组件
 import { List, Checkbox, Flex } from 'antd-mobile';
 import Item from 'antd-mobile/lib/popover/Item';
+//对话框组件
+import { Modal, Button, WhiteSpace, WingBlank, Toast } from 'antd-mobile';
+const alert = Modal.alert;
 const CheckboxItem = Checkbox.CheckboxItem;
 const AgreeItem = Checkbox.AgreeItem;
 
@@ -25,7 +30,21 @@ let ShopCartInfo = {
         localStorage.setItem("ShopCartInfo", JSON.stringify(data));
     }
 };
-
+let LoginInfo = {
+    getData() {
+        //获取数据
+        let list = localStorage.getItem("LoginToken");
+        if (list) {
+            return JSON.parse(list);
+        } else {
+            return [];
+        }
+    },
+    setData(data) {
+        //保存数据
+        localStorage.setItem("LoginToken", JSON.stringify(data));
+    }
+};
 class ShopCart extends Component {
     constructor() {
         super();
@@ -34,7 +53,7 @@ class ShopCart extends Component {
             cartData: [],//用于存放请求回来的购物商品数据
             Total_price: 0,//总价
             Purchase_quantity: 0,//购买数量
-            all_checked: false//用于全选按钮的判断
+            all_checked: false,//用于全选按钮的判断
         }
         this.NavBoxStyle = this.NavBoxStyle.bind(this)
         this.add_num = this.add_num.bind(this)
@@ -45,21 +64,32 @@ class ShopCart extends Component {
         this.refresh_checked = this.refresh_checked.bind(this)
     }
     async componentDidMount() {
-        // 前端+后端操作——获取数据
-        let num = 0//计数
-        if (ShopCartInfo.getData().length) {
-            this.refresh_checked()
-            this.setState({
-                cartData: ShopCartInfo.getData()
-            })
-            this.refresh()
+        //获取token查看是否处在登录状态
+        const token = LoginInfo.getData();
+        const data = await token_verify(token)
+        if (data.flag) {
+            // 前端+后端操作——获取数据
+            let num = 0//计数
+            if (ShopCartInfo.getData().length) {
+                this.refresh_checked()
+                this.setState({
+                    cartData: ShopCartInfo.getData()
+                })
+                this.refresh()
+            }
+            else {
+                ShopCartInfo.setData(await Cart_data())
+                this.setState({
+                    cartData: ShopCartInfo.getData()
+                })
+            }
         }
         else {
-            ShopCartInfo.setData(await Cart_data())
-            this.setState({
-                cartData: ShopCartInfo.getData()
-            })
+            alert('登录提示', '请前往登录！', [
+                { text: '确认', onPress: () => this.props.history.push('/login') },
+            ])
         }
+
         // 数据库操作——获取数据
         // this.setState({
         //     cartData: await Cart_data()
@@ -242,6 +272,8 @@ class ShopCart extends Component {
         }
 
     }
+    //input框直接输入事件
+    input_BuyNum(val) {}
     render() {
         // 数据放在前端操作需要的模板
         return (
@@ -288,7 +320,7 @@ class ShopCart extends Component {
                                         {/* 增加与减少 */}
                                         <div className="del_btnNum">
                                             <a className="add_btn" onClick={() => this.reduce_num(item[0].id, item[0].detail.buy_num)}></a>
-                                            <input value={item[0].detail.buy_num} onChange={this.componentDidMount} />
+                                            <input value={item[0].detail.buy_num} onChange={(val) => { this.input_BuyNum(val) }} />
                                             <a className="reduce_btn" onClick={() => this.add_num(item[0].id, item[0].detail.buy_num, item[0].detail.stock)}></a>
                                         </div>
                                     </CheckboxItem>

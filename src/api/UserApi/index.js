@@ -24,3 +24,10 @@ export async function modify(username, password, new_password) {
         new_passsword: new_password
     })
 }
+
+//token验证接口
+export async function token_verify(token) {
+    return await http.get('/user/verify', {
+        token: token
+    })
+}
