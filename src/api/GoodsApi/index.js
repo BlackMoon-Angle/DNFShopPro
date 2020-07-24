@@ -63,3 +63,15 @@ export async function delete_data() {
 export async function all_checked_data() {
     return await http.put('/good/checked')
 }
+
+/*-------------------------------------后台商品操作------------------------------------- */
+// // 商品列表数据请求
+// export async function Home_data() {
+//     return await http.get('/good/CMSData')
+// }
+// //点击后删除选定的商品
+// export async function delete_data() {
+//     return await http.put('/good/CMSdelete', {
+//         id: id,
+//     })
+// }

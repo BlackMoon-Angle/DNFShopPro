@@ -1,0 +1,18 @@
+@function vw($px) {
+    @return ($px / 750) * 100vw
+}
+
+;
+
+.canvas_box {
+    width: 100%;
+    transition: 1s;
+    position: fixed;
+    top: vw(-30);
+    z-index: 990;
+
+    #captcha1{
+        width: 100%;
+        height: 100%;
+    }
+}
