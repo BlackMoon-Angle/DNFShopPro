@@ -84,7 +84,12 @@ class Login extends Component {
                 }
                 else {
                     alert('登录提示', <div>登录失败,用户名或密码错误！</div>, [
-                        { text: '确定', onPress: () => this.setState({ username: '', password: '' }) },
+                        {
+                            text: '确定', onPress: () => {
+                                this.fn_captcha();
+                                this.setState({ username: '', password: '', user_captcha: '' })
+                            }
+                        },
                     ])
                 }
             }
